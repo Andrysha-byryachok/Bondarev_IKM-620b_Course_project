@@ -5,7 +5,7 @@ namespace Bondarev_IKM_620b_Course_project
 {
     public partial class Form1 : Form
     {
-        private bool Mode;
+        private bool Mode = false;
         private MajorWork MajorObject;
 
         public Form1()
@@ -21,28 +21,27 @@ namespace Bondarev_IKM_620b_Course_project
             tClock.Start();
         }
 
+      
         private void bStart_Click(object sender, EventArgs e)
         {
-
             if (Mode)
             {
-                tbInput.Enabled = false;// зміна активності Text box
-                bStart.Text = "Go"; // зміна тексту на кнопці на "Стоп"
+                tbInput.Enabled = true;// Режим дозволу введення
+                tbInput.Focus();
+                tClock.Start();
+                bStart.Text = "STOP"; // зміна тексту на кнопці на "Стоп"
                 Mode = false;
-                tClock.Stop();
             }
             else
             {
-                tbInput.Enabled = true;// зміна активності Text box
-                bStart.Text = "Stop";// зміна тексту на кнопці на "Пуск"
+                tbInput.Enabled = false;// Режим заборони
+                tClock.Stop();
+                bStart.Text = "GO ";// зміна тексту на кнопці на "Пуск"
                 Mode = true;
-                tClock.Start();
-                tbInput.Focus();
                 MajorObject.Write(tbInput.Text);// Запис даних у об'єкт
                 MajorObject.Task();// Обробка даних
                 label1.Text = MajorObject.Read();// Відображення результату
             }
-
         }
 
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
@@ -64,11 +63,19 @@ namespace Bondarev_IKM_620b_Course_project
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MajorObject = new MajorWork();
+            MajorObject.SetTime();
             About A = new About(); // створення форми About
             A.tAbout.Start();
-            A.ShowDialog(); // відображення діалогового вікна About
-            MajorObject = new MajorWork();
+            A.ShowDialog(); // відображення діалогового вікна About 
             Mode = true;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string s;
+            s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
+            MessageBox.Show(s, "Час роботи програми"); // Виведення часу роботи програми іповідомлення "Час роботи програми" на екран
         }
     }
 }
