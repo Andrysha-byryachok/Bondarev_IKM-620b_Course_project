@@ -123,6 +123,7 @@
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -148,6 +149,7 @@
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // howSaveToolStripMenuItem
             // 
@@ -183,19 +185,19 @@
             // 
             this.gOToolStripMenuItem.Name = "gOToolStripMenuItem";
             this.gOToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.gOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gOToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.gOToolStripMenuItem.Text = "GO";
             this.gOToolStripMenuItem.Click += new System.EventHandler(this.bStart_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(138, 6);
             // 
             // aboutDrivesToolStripMenuItem
             // 
             this.aboutDrivesToolStripMenuItem.Name = "aboutDrivesToolStripMenuItem";
-            this.aboutDrivesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutDrivesToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.aboutDrivesToolStripMenuItem.Text = "About drives";
             this.aboutDrivesToolStripMenuItem.Click += new System.EventHandler(this.aboutDrivesToolStripMenuItem_Click);
             // 
@@ -214,9 +216,16 @@
             this.aboutTheProgramToolStripMenuItem.Text = "About the program";
             this.aboutTheProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutTheProgramToolStripMenuItem_Click);
             // 
+            // sfdSave
+            // 
+            this.sfdSave.DefaultExt = "ikm";
+            this.sfdSave.Filter = "рабочие файлы|*.ikm|All files|*.*";
+            // 
             // ofdOpen
             // 
+            this.ofdOpen.DefaultExt = "ikm";
             this.ofdOpen.FileName = "openFileDialog1";
+            this.ofdOpen.Filter = "рабочие файлы|*.ikm|All files|*.*";
             // 
             // Form1
             // 
@@ -230,6 +239,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
