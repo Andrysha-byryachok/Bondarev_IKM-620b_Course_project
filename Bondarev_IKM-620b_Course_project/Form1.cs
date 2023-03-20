@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Bondarev_IKM_620b_Course_project
 {
@@ -31,6 +32,7 @@ namespace Bondarev_IKM_620b_Course_project
                 tClock.Start();
                 bStart.Text = "STOP"; // зміна тексту на кнопці на "Стоп"
                 Mode = false;
+                gOToolStripMenuItem.Text = "STOP";
             }
             else
             {
@@ -41,6 +43,7 @@ namespace Bondarev_IKM_620b_Course_project
                 MajorObject.Write(tbInput.Text);// Запис даних у об'єкт
                 MajorObject.Task();// Обробка даних
                 label1.Text = MajorObject.Read();// Відображення результату
+                gOToolStripMenuItem.Text = "GO";
             }
         }
 
@@ -76,6 +79,60 @@ namespace Bondarev_IKM_620b_Course_project
             string s;
             s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
             MessageBox.Show(s, "Час роботи програми"); // Виведення часу роботи програми іповідомлення "Час роботи програми" на екран
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void aboutTheProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About A = new About();
+            A.ShowDialog();
+        }
+
+        private void howSaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sfdSave.ShowDialog() == DialogResult.OK)// Виклик діалогового вікна збереження файлу
+{
+                MessageBox.Show(sfdSave.FileName);
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ofdOpen.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна відкриття файлу
+
+{
+                MessageBox.Show(ofdOpen.FileName);
+            }
+        }
+
+        private void aboutDrivesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] Disks = System.IO.Directory.GetLogicalDrives(); // Строковий масив з логічніх дисків
+            string disk = "";
+
+            for (int i = 0; i < Disks.Length; i++)
+            {
+                try
+                {
+                    System.IO.DriveInfo D = new System.IO.DriveInfo(Disks[i]);
+                    disk += D.Name + "-" + (D.TotalSize/ (int)Math.Pow(1024,3) ).ToString() + " GB -" + (D.TotalFreeSpace/ (int)Math.Pow(1024, 3)).ToString() + " GB free space" + (char)13;// змінній присвоюється ім’я диска, загальна кількість місця и вільне місце на диску
+                }
+                catch
+                {
+                    disk += Disks[i] + "- не готовий" + (char)13; // якщо пристрій не готовий, то виведення на екран ім’я пристрою і повідомлення «не готовий»
+                }
+
+            }
+            MessageBox.Show(disk, "Drives");
         }
     }
 }
