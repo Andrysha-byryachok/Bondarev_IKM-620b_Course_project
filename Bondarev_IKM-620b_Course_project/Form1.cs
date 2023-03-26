@@ -1,4 +1,11 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
@@ -22,7 +29,6 @@ namespace Bondarev_IKM_620b_Course_project
             tClock.Start();
         }
 
-      
         private void bStart_Click(object sender, EventArgs e)
         {
             if (Mode)
@@ -82,11 +88,6 @@ namespace Bondarev_IKM_620b_Course_project
             MessageBox.Show(s, "Час роботи програми"); // Виведення часу роботи програми іповідомлення "Час роботи програми" на екран
         }
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -114,7 +115,8 @@ namespace Bondarev_IKM_620b_Course_project
             if (ofdOpen.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна відкриття файлу
 
 {
-                MessageBox.Show(ofdOpen.FileName);
+                MajorObject.WriteOpenFileName(ofdOpen.FileName);
+                MajorObject.ReadFromFile(dgwOpen);
             }
         }
 
@@ -158,10 +160,15 @@ namespace Bondarev_IKM_620b_Course_project
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-                if (MajorObject.Modify)
-                    if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",
-                    MessageBoxButtons.YesNo) == DialogResult.No)
-                        e.Cancel = true; // припинити закриття
+           if (MajorObject.Modify)
+           if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",
+           MessageBoxButtons.YesNo) == DialogResult.No)
+           e.Cancel = true; // припинити закриття
+        }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            MajorObject.Find(tbSearch.Text); //пошук
         }
     }
 }
