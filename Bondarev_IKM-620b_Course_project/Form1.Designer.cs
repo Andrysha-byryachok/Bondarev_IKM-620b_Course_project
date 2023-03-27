@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbInput = new System.Windows.Forms.TextBox();
@@ -54,24 +55,35 @@
             this.dgwOpen = new System.Windows.Forms.DataGridView();
             this.bSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.data_Entry = new System.Windows.Forms.TabPage();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.working_With_Files = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.data_Entry.SuspendLayout();
+            this.working_With_Files.SuspendLayout();
             this.SuspendLayout();
             // 
             // bStart
             // 
-            this.bStart.Location = new System.Drawing.Point(153, 328);
+            this.bStart.BackColor = System.Drawing.Color.Plum;
+            this.bStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bStart.Location = new System.Drawing.Point(481, 279);
             this.bStart.Name = "bStart";
             this.bStart.Size = new System.Drawing.Size(71, 46);
             this.bStart.TabIndex = 0;
             this.bStart.Text = "GO";
-            this.bStart.UseVisualStyleBackColor = true;
+            this.bStart.UseVisualStyleBackColor = false;
             this.bStart.Click += new System.EventHandler(this.bStart_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(177, 172);
+            this.label1.Location = new System.Drawing.Point(500, 143);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -82,7 +94,7 @@
             this.tbInput.Enabled = false;
             this.tbInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbInput.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.tbInput.Location = new System.Drawing.Point(50, 243);
+            this.tbInput.Location = new System.Drawing.Point(353, 191);
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(320, 62);
             this.tbInput.TabIndex = 2;
@@ -233,40 +245,94 @@
             // dgwOpen
             // 
             this.dgwOpen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwOpen.Location = new System.Drawing.Point(398, 121);
+            this.dgwOpen.Location = new System.Drawing.Point(478, 6);
             this.dgwOpen.Name = "dgwOpen";
-            this.dgwOpen.Size = new System.Drawing.Size(598, 205);
+            this.dgwOpen.Size = new System.Drawing.Size(500, 340);
             this.dgwOpen.TabIndex = 4;
+            this.dgwOpen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOpen_CellContentClick);
             // 
             // bSearch
             // 
-            this.bSearch.Location = new System.Drawing.Point(768, 408);
+            this.bSearch.BackColor = System.Drawing.Color.Plum;
+            this.bSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bSearch.Location = new System.Drawing.Point(201, 135);
             this.bSearch.Name = "bSearch";
-            this.bSearch.Size = new System.Drawing.Size(75, 23);
+            this.bSearch.Size = new System.Drawing.Size(88, 38);
             this.bSearch.TabIndex = 5;
             this.bSearch.Text = "Search";
-            this.bSearch.UseVisualStyleBackColor = true;
+            this.bSearch.UseVisualStyleBackColor = false;
             this.bSearch.Click += new System.EventHandler(this.bSearch_Click);
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(757, 453);
+            this.tbSearch.Location = new System.Drawing.Point(193, 204);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(100, 20);
             this.tbSearch.TabIndex = 6;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.data_Entry);
+            this.tabControl1.Controls.Add(this.working_With_Files);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1008, 520);
+            this.tabControl1.TabIndex = 7;
+            // 
+            // data_Entry
+            // 
+            this.data_Entry.BackColor = System.Drawing.Color.Transparent;
+            this.data_Entry.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("data_Entry.BackgroundImage")));
+            this.data_Entry.Controls.Add(this.statusStrip2);
+            this.data_Entry.Controls.Add(this.statusStrip1);
+            this.data_Entry.Controls.Add(this.tbInput);
+            this.data_Entry.Controls.Add(this.bStart);
+            this.data_Entry.Controls.Add(this.label1);
+            this.data_Entry.Location = new System.Drawing.Point(4, 22);
+            this.data_Entry.Name = "data_Entry";
+            this.data_Entry.Padding = new System.Windows.Forms.Padding(3);
+            this.data_Entry.Size = new System.Drawing.Size(1000, 494);
+            this.data_Entry.TabIndex = 0;
+            this.data_Entry.Text = "Data entry";
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Location = new System.Drawing.Point(3, 447);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(994, 22);
+            this.statusStrip2.TabIndex = 4;
+            this.statusStrip2.Text = "statusStrip2";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(3, 469);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(994, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // working_With_Files
+            // 
+            this.working_With_Files.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("working_With_Files.BackgroundImage")));
+            this.working_With_Files.Controls.Add(this.dgwOpen);
+            this.working_With_Files.Controls.Add(this.tbSearch);
+            this.working_With_Files.Controls.Add(this.bSearch);
+            this.working_With_Files.Location = new System.Drawing.Point(4, 22);
+            this.working_With_Files.Name = "working_With_Files";
+            this.working_With_Files.Padding = new System.Windows.Forms.Padding(3);
+            this.working_With_Files.Size = new System.Drawing.Size(1000, 494);
+            this.working_With_Files.TabIndex = 1;
+            this.working_With_Files.Text = "Working with files";
+            this.working_With_Files.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1008, 548);
-            this.Controls.Add(this.tbSearch);
-            this.Controls.Add(this.bSearch);
-            this.Controls.Add(this.dgwOpen);
-            this.Controls.Add(this.tbInput);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.bStart);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -277,6 +343,11 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.data_Entry.ResumeLayout(false);
+            this.data_Entry.PerformLayout();
+            this.working_With_Files.ResumeLayout(false);
+            this.working_With_Files.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,6 +380,12 @@
         private System.Windows.Forms.DataGridView dgwOpen;
         private System.Windows.Forms.Button bSearch;
         private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage data_Entry;
+        private System.Windows.Forms.TabPage working_With_Files;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip2;
     }
 }
 

@@ -167,8 +167,8 @@ namespace Bondarev_IKM_620b_Course_project
         public void NewRec() // новий запис
         {
             this.Data = ""; // "" - ознака порожнього рядка
-            this.Result = null; // для string- null
-            this.Key = 0;
+            this.Result = default(string); // для string- null
+            this.Key = default(int);
         }
         public void Generator() // метод формування ключового поля
         {

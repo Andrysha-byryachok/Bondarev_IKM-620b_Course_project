@@ -19,12 +19,22 @@ namespace Bondarev_IKM_620b_Course_project
 
         private void tAbout_Tick(object sender, EventArgs e)
         {
-            Close();
+            tAbout.Stop();
+            if (progressBar1.Value < 100)
+            {
+                progressBar1.Value += 1;
+            }
+            tAbout.Start();
         }
 
         private void bClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void LbIAndProject_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

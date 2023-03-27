@@ -16,12 +16,32 @@ namespace Bondarev_IKM_620b_Course_project
         private bool Mode = false;
         private MajorWork MajorObject;
 
+        ToolStripLabel dateLabel;
+        ToolStripLabel timeLabel;
+        ToolStripLabel infoLabel;
+        Timer timer;
+
         public Form1()
         {
             InitializeComponent();
+            infoLabel = new ToolStripLabel();
+            infoLabel.Text = "Текущие дата и время:";
+            dateLabel = new ToolStripLabel();
+            timeLabel = new ToolStripLabel();
+            statusStrip1.Items.Add(infoLabel);
+            statusStrip1.Items.Add(dateLabel);
+            statusStrip1.Items.Add(timeLabel);
+            timer = new Timer() { Interval = 1000 };
+            timer.Tick += timer_Tick;
+            timer.Start();
 
         }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            dateLabel.Text = DateTime.Now.ToLongDateString();
 
+            timeLabel.Text = DateTime.Now.ToLongTimeString();
+        }
         private void tClock_Tick(object sender, EventArgs e)
         {
             tClock.Stop();
@@ -79,6 +99,9 @@ namespace Bondarev_IKM_620b_Course_project
             A.tAbout.Start();
             A.ShowDialog(); // відображення діалогового вікна About 
             Mode = true;
+
+            toolTip1.SetToolTip(bSearch, "Натисніть на кнопку для пошуку"); 
+            toolTip1.IsBalloon = true;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -96,6 +119,7 @@ namespace Bondarev_IKM_620b_Course_project
         private void aboutTheProgramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About A = new About();
+            A.progressBar1.Hide();
             A.ShowDialog();
         }
 
@@ -169,6 +193,11 @@ namespace Bondarev_IKM_620b_Course_project
         private void bSearch_Click(object sender, EventArgs e)
         {
             MajorObject.Find(tbSearch.Text); //пошук
+        }
+
+        private void dgwOpen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
