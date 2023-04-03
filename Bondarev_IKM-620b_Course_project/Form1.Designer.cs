@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbInput = new System.Windows.Forms.TextBox();
@@ -58,7 +57,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.data_Entry = new System.Windows.Forms.TabPage();
-            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.working_With_Files = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
@@ -98,6 +96,7 @@
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(320, 62);
             this.tbInput.TabIndex = 2;
+            this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
             this.tbInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInput_KeyPress);
             // 
             // tClock
@@ -283,8 +282,6 @@
             // data_Entry
             // 
             this.data_Entry.BackColor = System.Drawing.Color.Transparent;
-            this.data_Entry.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("data_Entry.BackgroundImage")));
-            this.data_Entry.Controls.Add(this.statusStrip2);
             this.data_Entry.Controls.Add(this.statusStrip1);
             this.data_Entry.Controls.Add(this.tbInput);
             this.data_Entry.Controls.Add(this.bStart);
@@ -296,14 +293,6 @@
             this.data_Entry.TabIndex = 0;
             this.data_Entry.Text = "Data entry";
             // 
-            // statusStrip2
-            // 
-            this.statusStrip2.Location = new System.Drawing.Point(3, 447);
-            this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(994, 22);
-            this.statusStrip2.TabIndex = 4;
-            this.statusStrip2.Text = "statusStrip2";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(3, 469);
@@ -314,7 +303,6 @@
             // 
             // working_With_Files
             // 
-            this.working_With_Files.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("working_With_Files.BackgroundImage")));
             this.working_With_Files.Controls.Add(this.dgwOpen);
             this.working_With_Files.Controls.Add(this.tbSearch);
             this.working_With_Files.Controls.Add(this.bSearch);
@@ -385,7 +373,6 @@
         private System.Windows.Forms.TabPage data_Entry;
         private System.Windows.Forms.TabPage working_With_Files;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.StatusStrip statusStrip2;
     }
 }
 

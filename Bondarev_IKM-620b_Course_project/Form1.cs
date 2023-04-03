@@ -199,6 +199,11 @@ namespace Bondarev_IKM_620b_Course_project
         {
 
         }
+
+        private void tbInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
  
