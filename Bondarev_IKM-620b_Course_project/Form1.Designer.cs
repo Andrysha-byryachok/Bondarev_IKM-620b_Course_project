@@ -61,18 +61,23 @@
             this.working_With_Files = new System.Windows.Forms.TabPage();
             this.stackQueue = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.Push = new System.Windows.Forms.Button();
-            this.Pop = new System.Windows.Forms.Button();
-            this.Peek = new System.Windows.Forms.Button();
-            this.Stacktb = new System.Windows.Forms.TextBox();
-            this.LabelStack = new System.Windows.Forms.Label();
             this.StackText = new System.Windows.Forms.Label();
-            this.Enqueue = new System.Windows.Forms.Button();
-            this.Dequeue = new System.Windows.Forms.Button();
-            this.Peek_q = new System.Windows.Forms.Button();
-            this.Queuetb = new System.Windows.Forms.TextBox();
-            this.LabelQueue = new System.Windows.Forms.Label();
+            this.LabelStack = new System.Windows.Forms.Label();
+            this.Stacktb = new System.Windows.Forms.TextBox();
+            this.Peek = new System.Windows.Forms.Button();
+            this.Pop = new System.Windows.Forms.Button();
+            this.Push = new System.Windows.Forms.Button();
             this.QueueText = new System.Windows.Forms.Label();
+            this.LabelQueue = new System.Windows.Forms.Label();
+            this.Queuetb = new System.Windows.Forms.TextBox();
+            this.Peek_q = new System.Windows.Forms.Button();
+            this.Dequeue = new System.Windows.Forms.Button();
+            this.Enqueue = new System.Windows.Forms.Button();
+            this.textFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.howSaveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -89,7 +94,7 @@
             // 
             this.bStart.BackColor = System.Drawing.Color.Plum;
             this.bStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bStart.Location = new System.Drawing.Point(481, 279);
+            this.bStart.Location = new System.Drawing.Point(459, 267);
             this.bStart.Name = "bStart";
             this.bStart.Size = new System.Drawing.Size(71, 46);
             this.bStart.TabIndex = 0;
@@ -100,18 +105,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(500, 143);
+            this.label1.Location = new System.Drawing.Point(478, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbInput
             // 
             this.tbInput.Enabled = false;
             this.tbInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbInput.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.tbInput.Location = new System.Drawing.Point(353, 191);
+            this.tbInput.Location = new System.Drawing.Point(331, 179);
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(320, 62);
             this.tbInput.TabIndex = 2;
@@ -209,7 +215,8 @@
             this.jobToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gOToolStripMenuItem,
             this.toolStripSeparator4,
-            this.aboutDrivesToolStripMenuItem});
+            this.aboutDrivesToolStripMenuItem,
+            this.textFilesToolStripMenuItem});
             this.jobToolStripMenuItem.Name = "jobToolStripMenuItem";
             this.jobToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.jobToolStripMenuItem.Text = "Job";
@@ -230,7 +237,7 @@
             // aboutDrivesToolStripMenuItem
             // 
             this.aboutDrivesToolStripMenuItem.Name = "aboutDrivesToolStripMenuItem";
-            this.aboutDrivesToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.aboutDrivesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutDrivesToolStripMenuItem.Text = "About drives";
             this.aboutDrivesToolStripMenuItem.Click += new System.EventHandler(this.aboutDrivesToolStripMenuItem_Click);
             // 
@@ -273,7 +280,7 @@
             // 
             this.bSearch.BackColor = System.Drawing.Color.Plum;
             this.bSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bSearch.Location = new System.Drawing.Point(201, 135);
+            this.bSearch.Location = new System.Drawing.Point(155, 37);
             this.bSearch.Name = "bSearch";
             this.bSearch.Size = new System.Drawing.Size(88, 38);
             this.bSearch.TabIndex = 5;
@@ -283,7 +290,7 @@
             // 
             // tbSearch
             // 
-            this.tbSearch.Location = new System.Drawing.Point(193, 204);
+            this.tbSearch.Location = new System.Drawing.Point(147, 106);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(100, 20);
             this.tbSearch.TabIndex = 6;
@@ -323,6 +330,7 @@
             // 
             // working_With_Files
             // 
+            this.working_With_Files.Controls.Add(this.richTextBox1);
             this.working_With_Files.Controls.Add(this.dgwOpen);
             this.working_With_Files.Controls.Add(this.tbSearch);
             this.working_With_Files.Controls.Add(this.bSearch);
@@ -371,28 +379,34 @@
             this.splitContainer1.Panel2.Controls.Add(this.Dequeue);
             this.splitContainer1.Panel2.Controls.Add(this.Enqueue);
             this.splitContainer1.Size = new System.Drawing.Size(1000, 494);
-            this.splitContainer1.SplitterDistance = 482;
+            this.splitContainer1.SplitterDistance = 481;
             this.splitContainer1.TabIndex = 0;
             // 
-            // Push
+            // StackText
             // 
-            this.Push.Location = new System.Drawing.Point(68, 276);
-            this.Push.Name = "Push";
-            this.Push.Size = new System.Drawing.Size(75, 23);
-            this.Push.TabIndex = 0;
-            this.Push.Text = "Push";
-            this.Push.UseVisualStyleBackColor = true;
-            this.Push.Click += new System.EventHandler(this.Push_Click);
+            this.StackText.AutoSize = true;
+            this.StackText.Location = new System.Drawing.Point(244, 406);
+            this.StackText.Name = "StackText";
+            this.StackText.Size = new System.Drawing.Size(35, 13);
+            this.StackText.TabIndex = 5;
+            this.StackText.Text = "Stack";
             // 
-            // Pop
+            // LabelStack
             // 
-            this.Pop.Location = new System.Drawing.Point(217, 276);
-            this.Pop.Name = "Pop";
-            this.Pop.Size = new System.Drawing.Size(75, 23);
-            this.Pop.TabIndex = 1;
-            this.Pop.Text = "Pop";
-            this.Pop.UseVisualStyleBackColor = true;
-            this.Pop.Click += new System.EventHandler(this.Pop_Click);
+            this.LabelStack.AutoSize = true;
+            this.LabelStack.Location = new System.Drawing.Point(241, 77);
+            this.LabelStack.Name = "LabelStack";
+            this.LabelStack.Size = new System.Drawing.Size(61, 13);
+            this.LabelStack.TabIndex = 4;
+            this.LabelStack.Text = "LabelStack";
+            // 
+            // Stacktb
+            // 
+            this.Stacktb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Stacktb.Location = new System.Drawing.Point(119, 164);
+            this.Stacktb.Name = "Stacktb";
+            this.Stacktb.Size = new System.Drawing.Size(281, 49);
+            this.Stacktb.TabIndex = 3;
             // 
             // Peek
             // 
@@ -404,51 +418,51 @@
             this.Peek.UseVisualStyleBackColor = true;
             this.Peek.Click += new System.EventHandler(this.Peek_Click);
             // 
-            // Stacktb
+            // Pop
             // 
-            this.Stacktb.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Stacktb.Location = new System.Drawing.Point(119, 164);
-            this.Stacktb.Name = "Stacktb";
-            this.Stacktb.Size = new System.Drawing.Size(281, 49);
-            this.Stacktb.TabIndex = 3;
+            this.Pop.Location = new System.Drawing.Point(217, 276);
+            this.Pop.Name = "Pop";
+            this.Pop.Size = new System.Drawing.Size(75, 23);
+            this.Pop.TabIndex = 1;
+            this.Pop.Text = "Pop";
+            this.Pop.UseVisualStyleBackColor = true;
+            this.Pop.Click += new System.EventHandler(this.Pop_Click);
             // 
-            // LabelStack
+            // Push
             // 
-            this.LabelStack.AutoSize = true;
-            this.LabelStack.Location = new System.Drawing.Point(241, 77);
-            this.LabelStack.Name = "LabelStack";
-            this.LabelStack.Size = new System.Drawing.Size(61, 13);
-            this.LabelStack.TabIndex = 4;
-            this.LabelStack.Text = "LabelStack";
+            this.Push.Location = new System.Drawing.Point(68, 276);
+            this.Push.Name = "Push";
+            this.Push.Size = new System.Drawing.Size(75, 23);
+            this.Push.TabIndex = 0;
+            this.Push.Text = "Push";
+            this.Push.UseVisualStyleBackColor = true;
+            this.Push.Click += new System.EventHandler(this.Push_Click);
             // 
-            // StackText
+            // QueueText
             // 
-            this.StackText.AutoSize = true;
-            this.StackText.Location = new System.Drawing.Point(244, 406);
-            this.StackText.Name = "StackText";
-            this.StackText.Size = new System.Drawing.Size(35, 13);
-            this.StackText.TabIndex = 5;
-            this.StackText.Text = "Stack";
+            this.QueueText.AutoSize = true;
+            this.QueueText.Location = new System.Drawing.Point(229, 406);
+            this.QueueText.Name = "QueueText";
+            this.QueueText.Size = new System.Drawing.Size(39, 13);
+            this.QueueText.TabIndex = 5;
+            this.QueueText.Text = "Queue";
             // 
-            // Enqueue
+            // LabelQueue
             // 
-            this.Enqueue.Location = new System.Drawing.Point(37, 276);
-            this.Enqueue.Name = "Enqueue";
-            this.Enqueue.Size = new System.Drawing.Size(75, 23);
-            this.Enqueue.TabIndex = 0;
-            this.Enqueue.Text = "Enqueue";
-            this.Enqueue.UseVisualStyleBackColor = true;
-            this.Enqueue.Click += new System.EventHandler(this.Enqueue_Click);
+            this.LabelQueue.AutoSize = true;
+            this.LabelQueue.Location = new System.Drawing.Point(235, 77);
+            this.LabelQueue.Name = "LabelQueue";
+            this.LabelQueue.Size = new System.Drawing.Size(65, 13);
+            this.LabelQueue.TabIndex = 4;
+            this.LabelQueue.Text = "LabelQueue";
             // 
-            // Dequeue
+            // Queuetb
             // 
-            this.Dequeue.Location = new System.Drawing.Point(214, 276);
-            this.Dequeue.Name = "Dequeue";
-            this.Dequeue.Size = new System.Drawing.Size(75, 23);
-            this.Dequeue.TabIndex = 1;
-            this.Dequeue.Text = "Dequeue";
-            this.Dequeue.UseVisualStyleBackColor = true;
-            this.Dequeue.Click += new System.EventHandler(this.Dequeue_Click);
+            this.Queuetb.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Queuetb.Location = new System.Drawing.Point(110, 164);
+            this.Queuetb.Name = "Queuetb";
+            this.Queuetb.Size = new System.Drawing.Size(318, 47);
+            this.Queuetb.TabIndex = 3;
             // 
             // Peek_q
             // 
@@ -460,31 +474,64 @@
             this.Peek_q.UseVisualStyleBackColor = true;
             this.Peek_q.Click += new System.EventHandler(this.Peek_q_Click);
             // 
-            // Queuetb
+            // Dequeue
             // 
-            this.Queuetb.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Queuetb.Location = new System.Drawing.Point(110, 164);
-            this.Queuetb.Name = "Queuetb";
-            this.Queuetb.Size = new System.Drawing.Size(318, 47);
-            this.Queuetb.TabIndex = 3;
+            this.Dequeue.Location = new System.Drawing.Point(214, 276);
+            this.Dequeue.Name = "Dequeue";
+            this.Dequeue.Size = new System.Drawing.Size(75, 23);
+            this.Dequeue.TabIndex = 1;
+            this.Dequeue.Text = "Dequeue";
+            this.Dequeue.UseVisualStyleBackColor = true;
+            this.Dequeue.Click += new System.EventHandler(this.Dequeue_Click);
             // 
-            // LabelQueue
+            // Enqueue
             // 
-            this.LabelQueue.AutoSize = true;
-            this.LabelQueue.Location = new System.Drawing.Point(235, 77);
-            this.LabelQueue.Name = "LabelQueue";
-            this.LabelQueue.Size = new System.Drawing.Size(65, 13);
-            this.LabelQueue.TabIndex = 4;
-            this.LabelQueue.Text = "LabelQueue";
+            this.Enqueue.Location = new System.Drawing.Point(37, 276);
+            this.Enqueue.Name = "Enqueue";
+            this.Enqueue.Size = new System.Drawing.Size(75, 23);
+            this.Enqueue.TabIndex = 0;
+            this.Enqueue.Text = "Enqueue";
+            this.Enqueue.UseVisualStyleBackColor = true;
+            this.Enqueue.Click += new System.EventHandler(this.Enqueue_Click);
             // 
-            // QueueText
+            // textFilesToolStripMenuItem
             // 
-            this.QueueText.AutoSize = true;
-            this.QueueText.Location = new System.Drawing.Point(229, 406);
-            this.QueueText.Name = "QueueText";
-            this.QueueText.Size = new System.Drawing.Size(39, 13);
-            this.QueueText.TabIndex = 5;
-            this.QueueText.Text = "Queue";
+            this.textFilesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem1,
+            this.howSaveToolStripMenuItem1,
+            this.openToolStripMenuItem1});
+            this.textFilesToolStripMenuItem.Name = "textFilesToolStripMenuItem";
+            this.textFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textFilesToolStripMenuItem.Text = "Text files";
+            // 
+            // saveToolStripMenuItem1
+            // 
+            this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Text = "Save";
+            this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
+            // 
+            // howSaveToolStripMenuItem1
+            // 
+            this.howSaveToolStripMenuItem1.Name = "howSaveToolStripMenuItem1";
+            this.howSaveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.howSaveToolStripMenuItem1.Text = "How save";
+            this.howSaveToolStripMenuItem1.Click += new System.EventHandler(this.howSaveToolStripMenuItem1_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(8, 188);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(387, 149);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
+            // 
+            // openToolStripMenuItem1
+            // 
+            this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem1.Text = "Open";
+            this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -566,6 +613,11 @@
         private System.Windows.Forms.Button Peek_q;
         private System.Windows.Forms.Button Dequeue;
         private System.Windows.Forms.Button Enqueue;
+        private System.Windows.Forms.ToolStripMenuItem textFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem howSaveToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
